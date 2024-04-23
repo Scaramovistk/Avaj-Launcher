@@ -2,6 +2,9 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		System.out.print("test");
+		Tester obj = new Tester();
+		System.out.print("\nStarted\n");
+		obj.testAircraftFactory();
+		// System.out.print("test");
 	}
 }
