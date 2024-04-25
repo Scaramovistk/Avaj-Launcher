@@ -1,3 +1,5 @@
+import javax.lang.model.util.ElementScanner6;
+
 /**
  * A class that has 3 private ints to setup coordinates
  */
@@ -15,7 +17,8 @@ public class Coordinates
 	 */
 	Coordinates(int p_longitude, int p_latitude, int p_height)
 	{
-		//Should i check something here ?
+		if (p_longitude < 0 || p_latitude < 0 || (p_height < 0 && p_height > 100))
+			throw new IllegalArgumentException("Invalid coordinates or height");
 		longitude = p_longitude;
 		latitude = p_latitude;
 		height = p_height;
@@ -25,26 +28,17 @@ public class Coordinates
 	 * Give the value of longitude
 	 * @return the longitude param
 	 */
-	public int getLongitude()
-	{
-		return (longitude);
-	}
-	
+	public int getLongitude() { return (longitude); }
+
 	/**
 	 * Give the value of latitude
 	 * @return the latitude param
 	 */
-	public int getLatitude()
-	{
-		return (latitude);
-	}
-	
+	public int getLatitude() { return (latitude); }
+
 	/**
 	 * Give the value of height
 	 * @return the height param
 	 */
-	public int getHeight()
-	{
-		return (height);
-	}
+	public int getHeight() { return (height); }
 }

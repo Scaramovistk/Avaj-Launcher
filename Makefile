@@ -2,9 +2,13 @@ NAME = Main
 
 all:
 	javac ${NAME}.java
-	java ${NAME}
+	java ${NAME} scenario.txt
 
 re: clean all
 
 clean:
 	rm -rf *.class
+	rm -rf *.html
+	rm -rf *.js
+	rm -rf *.css
+	rm -rf *.zip

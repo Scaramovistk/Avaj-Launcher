@@ -1,3 +1,7 @@
+install_openjdf.sh
 DS_STORE
 *.class
-install_openjdf.sh
+*.html
+*.js
+*.css
+*.zip

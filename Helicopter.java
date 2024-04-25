@@ -7,6 +7,11 @@ public class Helicopter extends Aircraft
 
 	public void updateConditions()
 	{
-		
+		/**
+		 * ◦ SUN - Longitude increases with 10, Height increases with 2
+		◦ RAIN - Longitude increases with 5
+		◦ FOG - Longitude increases with 1
+		◦ SNOW - Height decreases with 12
+		 */
 	}
 }

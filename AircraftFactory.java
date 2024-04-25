@@ -6,15 +6,15 @@ import java.lang.reflect.Field;
 public class AircraftFactory
 {
 	private static AircraftFactory instance;
-	private String[] aircrafTypes = {
-		"Baloon",
-		"JetPlane",
-		"Helicopter"};
+	private static int id_count;
 
 	/**
 	 * Constructor that will initialize the AircraftFactory values
 	 */
-	private AircraftFactory(){ /*Initialization code if needed */ }
+	private AircraftFactory()
+	{
+		id_count = 0;
+	}
 
 	/**
 	 * Makes the AircraftFactory a Singleton
@@ -32,22 +32,22 @@ public class AircraftFactory
 	 * @param p_type is the Aircraft type
 	 * @param p_name is the Aircraft name
 	 * @param p_coordinates is the Aicraft coordinates
-	 * @return a new Aircraft if valid or null if not
+	 * @return a new Aircraft if valid or exeption if not
 	 */
 	public Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates)
 	{
-		int row;
-
-		row = 0;
-		while (row != aircrafTypes.length)
+		if (p_type == null || p_name == null || p_coordinates == null)
+			throw new IllegalArgumentException("Invalid argument: Set to null");
+		switch (p_type)
 		{
-			if (aircrafTypes[row] == p_type)
-				break;
-			row++;
+			case "Baloon":
+				return new Baloon(id_count++, p_name, p_coordinates);
+			case "JetPlane":
+				return new JetPlane(id_count++, p_name, p_coordinates);
+			case "Helicopter":
+				return new Helicopter(id_count++, p_name, p_coordinates);
+			default:
+				throw new IllegalArgumentException("Invalid argument: Type");
 		}
-
-		if (row < aircrafTypes.length && p_name != null && p_coordinates != null)
-			return new Aircraft(row, p_name, p_coordinates);
-		return null;
 	}
 }
