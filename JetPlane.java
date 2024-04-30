@@ -7,6 +7,8 @@ public class JetPlane extends Aircraft
 
 	public void updateConditions()
 	{
+		System.out.println("JetPlane - Id: " + id + " Name: " + name);
+		// System.out.println(coordinates);
 		/**
 		 * SUN - Latitude increases with 10, Height increases with 2
 		RAIN - Latitude increases with 5

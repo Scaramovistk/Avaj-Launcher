@@ -1,5 +1,3 @@
-import java.lang.reflect.Field;
-
 /**
  * A class made in the Factory Design Patter, that will make diferent type of Aircrafts
  */
@@ -47,7 +45,7 @@ public class AircraftFactory
 			case "Helicopter":
 				return new Helicopter(id_count++, p_name, p_coordinates);
 			default:
-				throw new IllegalArgumentException("Invalid argument: Type");
+				throw new IllegalArgumentException("Invalid argument: Type " + p_type + " dont exist");
 		}
 	}
 }

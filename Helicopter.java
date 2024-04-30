@@ -7,6 +7,8 @@ public class Helicopter extends Aircraft
 
 	public void updateConditions()
 	{
+		System.out.println("Helicoper - Id: " + id + " Name: " + name);
+		// System.out.println(coordinates);
 		/**
 		 * ◦ SUN - Longitude increases with 10, Height increases with 2
 		◦ RAIN - Longitude increases with 5

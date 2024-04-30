@@ -7,6 +7,8 @@ public class Baloon extends Aircraft
 
 	public void updateConditions()
 	{
+		System.out.println("Baloon - Id: " + id + " Name: " + name);
+		// System.out.println(coordinates);
 		/**
 		 * ◦ SUN - Longitude increases with 2, Height increases with 4
 		◦ RAIN - Height decreases with 5

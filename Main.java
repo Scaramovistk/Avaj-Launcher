@@ -12,9 +12,10 @@ public class Main
 		}
 
 		ReadFile file = new ReadFile(args[0]);
-		List<String> file_strings = file.fileContent();
+		List<String> file_content = file.fileContent();
+		Simulation simulation = new Simulation(file_content); //After make it shorter
 
-		for (String str : file_strings)
-			System.out.println(str);
+		// for (String str : file_content)
+		// 	System.out.println(str);
 	}
 }
