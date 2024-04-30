@@ -1,5 +1,6 @@
 install_openjdf.sh
-DS_STORE
+/resources
+.DS_STORE
 *.class
 *.html
 *.js

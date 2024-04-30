@@ -12,3 +12,4 @@ clean:
 	rm -rf *.js
 	rm -rf *.css
 	rm -rf *.zip
+	rm -rf resources
