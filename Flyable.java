@@ -1,5 +1,6 @@
 public abstract class Flyable
 {
+	//This is subscriber class
 	protected WeatherTower weatherTower;
 
 	public abstract void updateConditions();
@@ -9,3 +10,9 @@ public abstract class Flyable
 
 	}
 }
+
+// protected Aircraft(String type, Flyable flyable)
+// {
+// 	this.factory = AircraftFactory.getInstance();
+// }
+// protected final AircraftFactory factory;

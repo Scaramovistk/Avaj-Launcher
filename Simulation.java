@@ -30,12 +30,12 @@ public class Simulation {
 				int latitude = Integer.parseInt(instructions[3]);
 				int height = Integer.parseInt(instructions[4]);
 
-				Coordinates coordinates = new Coordinates(longitude, latitude, height);
-
-				//Should it be shorter ?
 				AircraftFactory factory = AircraftFactory.getInstance();
-
+				Coordinates coordinates = new Coordinates(longitude, latitude, height);
 				Flyable plane = factory.newAircraft(type, name, coordinates);
+				//Should it be shorter ?
+
+				plane.updateConditions();
 
 				// Check Type
 				// Check Name
@@ -44,7 +44,6 @@ public class Simulation {
 				// Build Aircraft ?
 
 				// System.out.println("Type: " + type);
-				plane.updateConditions();
 
 				// System.out.println("Type: " + type);
 				// System.out.println("Name: " + name);

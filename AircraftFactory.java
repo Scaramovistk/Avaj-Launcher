@@ -1,17 +1,20 @@
+import java.util.Map;
+
 /**
  * A class made in the Factory Design Patter, that will make diferent type of Aircrafts
  */
 public class AircraftFactory
 {
 	private static AircraftFactory instance;
-	private static int id_count;
+	private static int idCount;
+	private static Map<String, Flyable> aircraftTypes;
 
 	/**
 	 * Constructor that will initialize the AircraftFactory values
 	 */
 	private AircraftFactory()
 	{
-		id_count = 0;
+		idCount = 0;
 	}
 
 	/**
@@ -36,16 +39,23 @@ public class AircraftFactory
 	{
 		if (p_type == null || p_name == null || p_coordinates == null)
 			throw new IllegalArgumentException("Invalid argument: Set to null");
+
+		
 		switch (p_type)
 		{
 			case "Baloon":
-				return new Baloon(id_count++, p_name, p_coordinates);
+				return new Baloon(idCount++, p_name, p_coordinates);
 			case "JetPlane":
-				return new JetPlane(id_count++, p_name, p_coordinates);
+				return new JetPlane(idCount++, p_name, p_coordinates);
 			case "Helicopter":
-				return new Helicopter(id_count++, p_name, p_coordinates);
+				return new Helicopter(idCount++, p_name, p_coordinates);
 			default:
 				throw new IllegalArgumentException("Invalid argument: Type " + p_type + " dont exist");
 		}
+	}
+
+	public void addFlyable (String type, Flyable flyable)
+	{
+		aircraftTypes.put(type, flyable);
 	}
 }
