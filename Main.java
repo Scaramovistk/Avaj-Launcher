@@ -12,9 +12,9 @@ public class Main
 		}
 
 		ReadFile file = new ReadFile(args[0]);
-		List<String> file_content = file.fileContent();
-		Simulation simulation = new Simulation(file_content); //After make it shorter
+		Simulation sim = new Simulation();
 
+		sim.startSimulation(file.fileContent());
 		// for (String str : file_content)
 		// 	System.out.println(str);
 	}

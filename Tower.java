@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.LinkedList;
 
 //This is the publisher class
 /**
@@ -6,7 +7,7 @@ import java.util.List;
  */
 public class Tower
 {
-	private List<Flyable> observers;
+	private List<Flyable> observers = new LinkedList<>();
 
 	/**
 	 * Register a Flyable object in the Tower
@@ -17,8 +18,7 @@ public class Tower
 		if (p_flyable != null)
 		{
 			observers.add(p_flyable);
-			String name = "Baloon#B1(1)"; //get the name from the flyable
-			System.out.print("Tower says: " + name + " registered to weather tower.");
+			System.out.print("Tower says: " + p_flyable.getName() + " registered to weather tower.\n");
 		}
 	}
 
@@ -28,11 +28,12 @@ public class Tower
 	 */
 	public void unregister(Flyable p_flyable)
 	{
-		if (!observers.remove(p_flyable))
+		if (observers.remove(p_flyable))
 		{
-			String name = "Baloon#B1(1)";
-			System.out.print("Tower says: " + name + " unregistered from weather tower.");
+			System.out.print("Tower says: " + p_flyable.getName() + " unregistered from weather tower.\n");
 		}
+		else
+			throw new IllegalArgumentException("Invalid argument: Element cannot be remove because it dosent exist");
 	}
 
 	/**

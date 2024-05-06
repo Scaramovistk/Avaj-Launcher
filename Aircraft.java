@@ -31,4 +31,9 @@ public class Aircraft extends Flyable
 		//If an aircraft reaches height 0 or needs to go below it, the aircraft lands, unregisters
 		//from the weather tower and logs a message.
 	}
+
+	public String getName()
+	{
+		return (this.name);
+	}
 }

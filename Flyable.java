@@ -5,6 +5,8 @@ public abstract class Flyable
 
 	public abstract void updateConditions();
 
+	public abstract String getName();
+
 	public void registerTower(WeatherTower p_tower)
 	{
 
