@@ -7,11 +7,11 @@ public class WeatherProvider extends Tower
 	private String[] weather;
 
 	/**
-	 * Constructs a WeatherProvider object
+	 * Constructs a WeatherProvider object and sets the weather types
 	 */
-	private WeatherProvider()
+	private static WeatherProvider()
 	{
-
+		weather = {"SUN", "RAIN", "FOG", "SNOW"};
 	}
 
 	/**
@@ -23,5 +23,13 @@ public class WeatherProvider extends Tower
 		if (instance == null)
 			instance = new WeatherProvider();
 		return (instance);
+	}
+
+	public static String getCurrentWeather(Coordinates cord)
+	{
+		int nbr = new Random().nextInt();
+
+		nbr = cord.getHeight > 60 ? 2 : nbr;
+		return (weather[nbr % 3]);
 	}
 }

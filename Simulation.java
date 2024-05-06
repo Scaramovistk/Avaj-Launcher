@@ -46,12 +46,10 @@ public class Simulation {
 			for (String str : aircraftInstructions)
 			{
 				Flyable plane = setUpAircraft(str);
-				Tower tower = new Tower();
+				WeatherTower tower = new Tower();
 
 				tower.register(plane);
-				tower.unregister(plane);
-				plane.updateConditions();
-
+				tower.changeWeather();
 			}
 		} catch (NumberFormatException e) {
 			System.out.println("Invalid number format: " + e.getMessage());

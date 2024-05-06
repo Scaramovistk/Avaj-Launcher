@@ -15,7 +15,7 @@ public class Tower
 	 */
 	public void register(Flyable p_flyable)
 	{
-		if (p_flyable != null)
+		if (p_flyable != null && !observers.contains(p_flyable))
 		{
 			observers.add(p_flyable);
 			System.out.print("Tower says: " + p_flyable.getName() + " registered to weather tower.\n");
@@ -28,8 +28,9 @@ public class Tower
 	 */
 	public void unregister(Flyable p_flyable)
 	{
-		if (observers.remove(p_flyable))
+		if (observers.contains(p_flyable))
 		{
+			observers.remove(p_flyable)
 			System.out.print("Tower says: " + p_flyable.getName() + " unregistered from weather tower.\n");
 		}
 		else
@@ -41,6 +42,9 @@ public class Tower
 	 */
 	protected void conditionChanged()
 	{
-
+		for (Flyable fly : observers)
+		{
+			fly.updateConditions();
+		}
 	}
 }

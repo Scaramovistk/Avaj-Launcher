@@ -6,7 +6,7 @@ import java.util.Map;
 public class AircraftFactory
 {
 	private static AircraftFactory instance;
-	private static int idCount;
+	private static long idCount;
 	private static Map<String, Flyable> aircraftTypes;
 
 	/**
@@ -40,7 +40,6 @@ public class AircraftFactory
 		if (p_type == null || p_name == null || p_coordinates == null)
 			throw new IllegalArgumentException("Invalid argument: Set to null");
 
-		
 		switch (p_type)
 		{
 			case "Baloon":
@@ -54,8 +53,8 @@ public class AircraftFactory
 		}
 	}
 
-	public void addFlyable (String type, Flyable flyable)
-	{
-		aircraftTypes.put(type, flyable);
-	}
+	// public void addFlyable (String type, Flyable flyable)
+	// {
+	// 	aircraftTypes.put(type, flyable);
+	// }
 }

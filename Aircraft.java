@@ -4,6 +4,7 @@
 public class Aircraft extends Flyable
 {
 	protected long id;
+	protected String type;
 	protected String name;
 	protected Coordinates coordinates;
 
@@ -20,20 +21,11 @@ public class Aircraft extends Flyable
 		id = p_id;
 		name = p_name;
 		coordinates = p_coordinate;
-	}
-
-	/**
-	 * Update Conditions
-	 */
-	public void updateConditions()
-	{
-		//If height 100+ = 100
-		//If an aircraft reaches height 0 or needs to go below it, the aircraft lands, unregisters
-		//from the weather tower and logs a message.
+		type = "Aircraft";
 	}
 
 	public String getName()
 	{
-		return (this.name);
+		return (type + "#" + name + "(" + id + ")");
 	}
 }

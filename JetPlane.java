@@ -3,12 +3,11 @@ public class JetPlane extends Aircraft
 	public JetPlane(long p_id, String p_name, Coordinates p_coordinate)
 	{
 		super(p_id, p_name, p_coordinate);
+		type = "JetPlane";
 	}
 
 	public void updateConditions()
 	{
-		System.out.println("JetPlane - Id: " + id + " Name: " + name);
-		// System.out.println(coordinates);
 		/**
 		 * SUN - Latitude increases with 10, Height increases with 2
 		RAIN - Latitude increases with 5
