@@ -1,13 +1,22 @@
+package Simulation;
+
+import File.*;
+import Interface.*;
+import Aircraft.*;
+import Weather.*;
+import Tower.*;
 import java.util.List;
 
 public class Simulation {
 	private int runningTimes;
 	private List<String> aircraftInstructions;
 	private AircraftFactory factory;
+	private WeatherTower tower;
 
 	public Simulation()
 	{
 		factory = AircraftFactory.getInstance();
+		tower = new WeatherTower();
 	}
 
 	public Flyable setUpAircraft(String str)
@@ -29,7 +38,7 @@ public class Simulation {
 		return (factory.newAircraft(type, name, coordinates));
 	}
 
-	public void startSimulation(List<String> fileContent) {
+	public void registerAircrafts(List<String> fileContent) {
 		if (fileContent == null) {
 			throw new IllegalArgumentException("Invalid file content: Set to null");
 		}
@@ -42,7 +51,6 @@ public class Simulation {
 			}
 
 			aircraftInstructions = fileContent.subList(1, fileContent.size());
-			WeatherTower tower = new WeatherTower();
 
 			for (String str : aircraftInstructions)
 			{
@@ -51,14 +59,17 @@ public class Simulation {
 				tower.register(plane);
 				plane.registerTower(tower);
 			}
-
-			for (int row = 0; row < runningTimes; row++)
-			{
-				WriteFile.writeToFile("\nSimulation: (" + row + ")");
-				tower.changeWeather();
-			}
 		} catch (NumberFormatException e) {
 			System.out.println("Invalid number format: " + e.getMessage());
+		}
+	}
+
+	public void runSimulation()
+	{
+		for (int row = 0; row < runningTimes; row++)
+		{
+			WriteFile.writeToFile("\nSimulation: (" + row + ")");
+			tower.changeWeather();
 		}
 	}
 }

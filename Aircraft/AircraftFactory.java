@@ -1,3 +1,7 @@
+package Aircraft;
+
+import Aircraft.*;
+import Interface.*;
 import java.util.Map;
 
 /**
@@ -32,7 +36,7 @@ public class AircraftFactory
 	 * Creates a new Aircraft and checks if all the parametes are valid
 	 * @param p_type is the Aircraft type
 	 * @param p_name is the Aircraft name
-	 * @param p_coordinates is the Aicraft coordinates
+	 * @param p_coordinates is the Aircraft coordinates
 	 * @return a new Aircraft if valid or exeption if not
 	 */
 	public Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates)

@@ -1,4 +1,7 @@
+package Weather;
+
 import java.util.Random;
+import Aircraft.*;
 
 /**
  * A class for making Weather Provider

@@ -1,3 +1,7 @@
+package Interface;
+
+import Tower.*;
+
 public abstract class Flyable
 {
 	protected WeatherTower weatherTower;

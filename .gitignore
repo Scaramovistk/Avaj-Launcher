@@ -6,3 +6,5 @@ install_openjdf.sh
 *.js
 *.css
 *.zip
+simulation.txt
+sources.txt

@@ -1,3 +1,9 @@
+package Aircraft;
+
+import Aircraft.*;
+import Interface.*;
+import File.*;
+
 /**
  * A class to be a blueprint for varios Aircraft types
  */
