@@ -17,7 +17,7 @@ public class Coordinates
 	 */
 	Coordinates(int p_longitude, int p_latitude, int p_height)
 	{
-		if (p_longitude < 0 || p_latitude < 0 || (p_height < 0 && p_height > 100))
+		if (p_longitude < 0 || p_latitude < 0 || p_height < 0 || p_height > 100)
 			throw new IllegalArgumentException("Invalid coordinates or height");
 		longitude = p_longitude;
 		latitude = p_latitude;

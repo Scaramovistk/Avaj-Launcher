@@ -42,13 +42,19 @@ public class Simulation {
 			}
 
 			aircraftInstructions = fileContent.subList(1, fileContent.size());
+			WeatherTower tower = new WeatherTower();
 
 			for (String str : aircraftInstructions)
 			{
 				Flyable plane = setUpAircraft(str);
-				WeatherTower tower = new Tower();
 
 				tower.register(plane);
+				plane.registerTower(tower);
+			}
+
+			for (int row = 0; row < runningTimes; row++)
+			{
+				WriteFile.writeToFile("\nSimulation: (" + row + ")");
 				tower.changeWeather();
 			}
 		} catch (NumberFormatException e) {

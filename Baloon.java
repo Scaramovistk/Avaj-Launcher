@@ -8,40 +8,36 @@ public class Baloon extends Aircraft
 
 	public void updateConditions()
 	{
-		String msg;
-		int longi = cordernates.getLongitude();
-		int lati = cordernates.getLatitude();
-		int heigh = cordernates.getHeight();
+		String msg = "";
+		int longi = coordinates.getLongitude();
+		int lati = coordinates.getLatitude();
+		int heigh = coordinates.getHeight();
 
-		switch(weatherTower.getCurrentWeather(coordinates))
+		switch(weatherTower.getWeather(coordinates))
 		{
-			case "SUN"
-				longi += 2;
-				hiegh += 4;
-				msg = "Let's enjoy the good weather and take some pics.";
-				break;
-			case "RAIN"
-				hiegh -= 5;
-				msg = "Damn you rain! You messed up my baloon.";
-				break;
-			case "Fog"
-				hiegh -= 3;
-				msg = "Looks like SnoopDog is in the area.";
-				break;
-			case "SNOW"
-				heigh -= 15;
-				msg = "It's snowing. We're gonna crash.";
-				break;
+			case "SUN":
+			longi += 2;
+			heigh += 4;
+			msg = ": Let's enjoy the good weather and take some pics.";
+			break;
+			case "RAIN":
+			heigh -= 5;
+			msg = ": Damn you rain! You messed up my baloon.";
+			break;
+			case "FOG":
+			heigh -= 3;
+			msg = ": Looks like Snoop Dogg is in the area.";
+			break;
+			case "SNOW":
+			heigh -= 15;
+			msg = ": It's snowing. We're gonna crash.";
+			break;
 		}
-
-		coordinates = new Coordinates(longi, lati, hiegh);
-		msg = getName + " :" + msg;
-
-		/**
-		 * ◦ SUN - Longitude increases with 2, Height increases with 4
-		◦ RAIN - Height decreases with 5
-		◦ FOG - Height decreases with 3
-		◦ SNOW - Height decreases with 15
-		 */
+		if (heigh > 100)
+			heigh = 100;
+		else if (heigh < 0)
+			heigh = 0;
+		coordinates = new Coordinates(longi, lati, heigh);
+		this.sendStatus(msg, heigh);
 	}
 }

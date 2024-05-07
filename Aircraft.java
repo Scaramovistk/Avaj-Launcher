@@ -28,4 +28,20 @@ public class Aircraft extends Flyable
 	{
 		return (type + "#" + name + "(" + id + ")");
 	}
+
+	public void updateConditions()
+	{
+
+	}
+
+	public void sendStatus(String msg, int heigh)
+	{
+		msg = this.getName() + msg;
+		WriteFile.writeToFile(msg);
+		if (heigh <= 0)
+		{
+			WriteFile.writeToFile(this.getName() + " landing.");
+			weatherTower.unregister(this);
+		}
+	}
 }

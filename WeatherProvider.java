@@ -1,17 +1,18 @@
+import java.util.Random;
+
 /**
  * A class for making Weather Provider
  */
-public class WeatherProvider extends Tower
+public class WeatherProvider
 {
 	private static WeatherProvider instance;
-	private String[] weather;
+	private static String[] weather = {"SUN", "RAIN", "FOG", "SNOW"};
 
 	/**
-	 * Constructs a WeatherProvider object and sets the weather types
+	 * Private Constructor making it a Singleton
 	 */
-	private static WeatherProvider()
+	private WeatherProvider()
 	{
-		weather = {"SUN", "RAIN", "FOG", "SNOW"};
 	}
 
 	/**
@@ -27,9 +28,10 @@ public class WeatherProvider extends Tower
 
 	public static String getCurrentWeather(Coordinates cord)
 	{
-		int nbr = new Random().nextInt();
+		int nbr = new Random().nextInt(4);
 
-		nbr = cord.getHeight > 60 ? 2 : nbr;
-		return (weather[nbr % 3]);
+		nbr = cord.getHeight() > 60 ? 2 : nbr;
+		nbr = cord.getHeight() > 80 ? 0 : nbr;
+		return (weather[(nbr % 4)]);
 	}
 }

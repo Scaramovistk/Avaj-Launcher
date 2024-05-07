@@ -13,3 +13,4 @@ clean:
 	rm -rf *.css
 	rm -rf *.zip
 	rm -rf resources
+	rm -rf simulation.txt

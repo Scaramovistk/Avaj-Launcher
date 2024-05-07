@@ -8,6 +8,7 @@ import java.util.LinkedList;
 public class Tower
 {
 	private List<Flyable> observers = new LinkedList<>();
+	private List<Flyable> unregistered = new LinkedList<>();
 
 	/**
 	 * Register a Flyable object in the Tower
@@ -18,7 +19,7 @@ public class Tower
 		if (p_flyable != null && !observers.contains(p_flyable))
 		{
 			observers.add(p_flyable);
-			System.out.print("Tower says: " + p_flyable.getName() + " registered to weather tower.\n");
+			WriteFile.writeToFile("Tower says: " + p_flyable.getName() + " registered to weather tower.");
 		}
 	}
 
@@ -30,8 +31,8 @@ public class Tower
 	{
 		if (observers.contains(p_flyable))
 		{
-			observers.remove(p_flyable)
-			System.out.print("Tower says: " + p_flyable.getName() + " unregistered from weather tower.\n");
+			unregistered.add(p_flyable);
+			WriteFile.writeToFile("Tower says: " + p_flyable.getName() + " unregistered from weather tower.");
 		}
 		else
 			throw new IllegalArgumentException("Invalid argument: Element cannot be remove because it dosent exist");
@@ -43,8 +44,8 @@ public class Tower
 	protected void conditionChanged()
 	{
 		for (Flyable fly : observers)
-		{
 			fly.updateConditions();
-		}
+		observers.removeAll(unregistered);
+		unregistered.clear();
 	}
 }

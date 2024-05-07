@@ -9,11 +9,37 @@ public class Helicopter extends Aircraft
 
 	public void updateConditions()
 	{
-		/**
-		 * ◦ SUN - Longitude increases with 10, Height increases with 2
-		◦ RAIN - Longitude increases with 5
-		◦ FOG - Longitude increases with 1
-		◦ SNOW - Height decreases with 12
-		 */
+		String msg = "";
+		int longi = coordinates.getLongitude();
+		int lati = coordinates.getLatitude();
+		int heigh = coordinates.getHeight();
+
+		switch(weatherTower.getWeather(coordinates))
+		{
+			case "SUN":
+				longi += 10;
+				heigh += 2;
+				msg = ": This is hot.";
+				break;
+			case "RAIN":
+				longi += 5;
+				msg = ": Damn raining again, as 99% of the days in Belgium.";
+				break;
+			case "FOG":
+				longi += 1;
+				msg = ": Turn lights on, we have no visibility.";
+				break;
+			case "SNOW":
+				heigh -= 12;
+				msg = ": My rotor is going to freeze!";
+				break;
+		}
+
+		if (heigh > 100)
+			heigh = 100;
+		else if (heigh < 0)
+			heigh = 0;
+		coordinates = new Coordinates(longi, lati, heigh);
+		this.sendStatus(msg ,heigh);
 	}
 }
