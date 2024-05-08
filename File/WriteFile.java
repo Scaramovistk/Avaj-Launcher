@@ -10,10 +10,7 @@ public class WriteFile
 	private static String fStr = "";
 
 
-	public WriteFile()
-	{
-
-	}
+	public WriteFile() {}
 
 	public static void writeToFile(String str)
 	{

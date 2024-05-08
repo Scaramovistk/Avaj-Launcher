@@ -1,9 +1,6 @@
 import File.ReadFile;
 import Simulation.*;
 
-import java.util.List;
-import java.util.ArrayList;
-
 public class Main
 {
 	public static void main(String[] args)
@@ -19,6 +16,5 @@ public class Main
 
 		sim.registerAircrafts(file.fileContent());
 		sim.runSimulation();
-
 	}
 }

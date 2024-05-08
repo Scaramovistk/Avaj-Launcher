@@ -1,25 +1,15 @@
 package Tower;
 
-import Tower.*;
-import Aircraft.*;
 import Interface.*;
 import File.*;
 import java.util.List;
 import java.util.LinkedList;
 
-//This is the publisher class
-/**
- * Class that will manage the Aircrafts
- */
 public class Tower
 {
 	private List<Flyable> observers = new LinkedList<>();
 	private List<Flyable> unregistered = new LinkedList<>();
 
-	/**
-	 * Register a Flyable object in the Tower
-	 * @param p_flyable is the Flyable object that will be register in the Tower
-	 */
 	public void register(Flyable p_flyable)
 	{
 		if (p_flyable != null && !observers.contains(p_flyable))
@@ -29,10 +19,6 @@ public class Tower
 		}
 	}
 
-	/**
-	 * Unregister a Flyable object in the Tower
-	 * @param p_flyable is the Flyable object that will be unregister in the Tower
-	 */
 	public void unregister(Flyable p_flyable)
 	{
 		if (observers.contains(p_flyable))
@@ -44,9 +30,6 @@ public class Tower
 			throw new IllegalArgumentException("Invalid argument: Element cannot be remove because it dosent exist");
 	}
 
-	/**
-	 * 
-	 */
 	protected void conditionChanged()
 	{
 		for (Flyable fly : observers)

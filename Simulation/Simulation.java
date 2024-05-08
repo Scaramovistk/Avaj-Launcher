@@ -3,7 +3,6 @@ package Simulation;
 import File.*;
 import Interface.*;
 import Aircraft.*;
-import Weather.*;
 import Tower.*;
 import java.util.List;
 

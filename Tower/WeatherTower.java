@@ -1,5 +1,4 @@
 package Tower;
-import Tower.*;
 import Aircraft.*;
 import Weather.*;
 

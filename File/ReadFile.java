@@ -1,6 +1,7 @@
 package File;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.FileReader;
 import java.util.List;
@@ -20,12 +21,14 @@ public class ReadFile
 
 	public List<String> fileContent()
 	{
+		File file = new File(fileName);
 		BufferedReader bf = null;
 		listOfStrings = new ArrayList<>();
-
+		if (!file.exists())
+			throw new IllegalArgumentException(fileName + " dont exist");
 		try {
 			bf = new BufferedReader(new FileReader(fileName));
-
+			
 			String line;
 			while ((line = bf.readLine()) != null)
 				listOfStrings.add(line);

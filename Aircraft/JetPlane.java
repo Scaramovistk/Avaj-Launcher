@@ -1,9 +1,5 @@
 package Aircraft;
 
-import Tower.*;
-import Weather.*;
-import Aircraft.*;
-
 public class JetPlane extends Aircraft
 {
 	public JetPlane(long p_id, String p_name, Coordinates p_coordinate)
