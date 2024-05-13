@@ -1,8 +1,10 @@
 package Aircraft;
 
+import Exception.IncorrectClassInitialisationExeption;
+
 public class Baloon extends Aircraft
 {
-	public Baloon(long p_id, String p_name, Coordinates p_coordinate)
+	public Baloon(long p_id, String p_name, Coordinates p_coordinate) throws IncorrectClassInitialisationExeption
 	{
 		super(p_id, p_name, p_coordinate);
 		type = "Baloon";

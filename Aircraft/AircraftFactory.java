@@ -1,14 +1,12 @@
 package Aircraft;
 
-import Aircraft.*;
+import Exception.IncorrectClassInitialisationExeption;
 import Interface.*;
-import java.util.Map;
 
 public class AircraftFactory
 {
 	private static AircraftFactory instance;
 	private static long idCount;
-	private static Map<String, Flyable> aircraftTypes;
 
 	private AircraftFactory()
 	{
@@ -22,7 +20,7 @@ public class AircraftFactory
 		return(instance);
 	}
 
-	public Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates)
+	public Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates) throws IncorrectClassInitialisationExeption
 	{
 		if (p_type == null || p_name == null || p_coordinates == null)
 			throw new IllegalArgumentException("Invalid argument: Set to null");

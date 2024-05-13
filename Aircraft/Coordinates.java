@@ -8,8 +8,10 @@ public class Coordinates
 
 	public Coordinates(int p_longitude, int p_latitude, int p_height)
 	{
-		if (p_longitude < 0 || p_latitude < 0 || p_height < 0 || p_height > 100)
+		if (p_longitude < 0 || p_latitude < 0 || p_height < 0)
 			throw new IllegalArgumentException("Invalid coordinates or height");
+		if (p_height > 100)
+			p_height = 100;
 		longitude = p_longitude;
 		latitude = p_latitude;
 		height = p_height;

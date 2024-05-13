@@ -4,11 +4,14 @@ import File.*;
 import Interface.*;
 import Aircraft.*;
 import Tower.*;
+import Exception.*;
+
+import java.util.LinkedList;
 import java.util.List;
 
 public class Simulation {
 	private int runningTimes;
-	private List<String> aircraftInstructions;
+	private List<Flyable> AircraftList;
 	private AircraftFactory factory;
 	private WeatherTower tower;
 
@@ -16,14 +19,15 @@ public class Simulation {
 	{
 		factory = AircraftFactory.getInstance();
 		tower = new WeatherTower();
+		AircraftList = new LinkedList<>();
 	}
 
-	public Flyable setUpAircraft(String str)
+	public Flyable setUpAircraft(String str) throws IncorrectFileContentException, IncorrectClassInitialisationExeption
 	{
 		String[] instructions = str.split(" ");
 
 		if (instructions.length < 5) {
-			throw new IllegalArgumentException("Invalid instruction format: " + str);
+			throw new IncorrectFileContentException("Invalid instruction format: " + str);
 		}
 
 		String type = instructions[0];
@@ -37,29 +41,24 @@ public class Simulation {
 		return (factory.newAircraft(type, name, coordinates));
 	}
 
-	public void registerAircrafts(List<String> fileContent) {
+	public void registerAircrafts(List<String> fileContent) throws IncorrectFileContentException, IncorrectClassInitialisationExeption
+	{
+		List<String> aircraftInstructions;
+
 		if (fileContent == null) {
-			throw new IllegalArgumentException("Invalid file content: Set to null");
+			throw new IncorrectFileContentException("Set to null");
 		}
-
-		try {
-			runningTimes = Integer.parseInt(fileContent.get(0));
-
-			if (runningTimes <= 0) {
-				throw new IllegalArgumentException(runningTimes + " is not a positive number");
-			}
-
-			aircraftInstructions = fileContent.subList(1, fileContent.size());
-
-			for (String str : aircraftInstructions)
-			{
-				Flyable plane = setUpAircraft(str);
-
-				tower.register(plane);
-				plane.registerTower(tower);
-			}
-		} catch (NumberFormatException e) {
-			System.out.println("Invalid number format: " + e.getMessage());
+		runningTimes = Integer.parseInt(fileContent.get(0));
+		if (runningTimes <= 0) {
+			throw new IncorrectFileContentException(runningTimes + " is not a positive number");
+		}
+		aircraftInstructions = fileContent.subList(1, fileContent.size());
+		for (String str : aircraftInstructions)
+			AircraftList.add(setUpAircraft(str));
+		for (Flyable plane : AircraftList)
+		{
+			tower.register(plane);
+			plane.registerTower(tower);
 		}
 	}
 
@@ -70,5 +69,6 @@ public class Simulation {
 			WriteFile.writeToFile("\nSimulation: (" + row + ")");
 			tower.changeWeather();
 		}
+		WriteFile.closeFile();
 	}
 }

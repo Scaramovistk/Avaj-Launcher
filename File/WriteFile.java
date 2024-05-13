@@ -7,18 +7,24 @@ import java.io.FileWriter;
 public class WriteFile
 {
 	private static String fileName = "simulation.txt";
-	private static String fStr = "";
+	private static String buffContent = "";
+	private static BufferedWriter writer;
 
+	public WriteFile()
+	{
 
-	public WriteFile() {}
+	}
 
 	public static void writeToFile(String str)
 	{
-		try
-		{
-			BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-			fStr += str + "\n";
-			writer.write(fStr);
+		buffContent += str + "\n";
+	}
+
+	public static void closeFile()
+	{
+		try {
+			writer = new BufferedWriter(new FileWriter(fileName));
+			writer.write(buffContent);
 			writer.close();
 		} catch (IOException e)
 		{
