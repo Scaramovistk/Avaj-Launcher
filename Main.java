@@ -43,7 +43,7 @@ public class Main
 			System.err.println("Input error: " + e);
 		}
 		catch (Exception e) {
-			System.err.println("Error			: " + e);
+			System.err.println("Error : " + e);
 		}
 	}
 }
