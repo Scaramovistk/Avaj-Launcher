@@ -1,20 +1,16 @@
-NAME = Main
+NAME = be._42belgium.avaj.simulator.Simulator
 
 all:
-	find . -name "*.java" > sources.txt
-	javac -sourcepath . @sources.txt
-	java ${NAME} scenario.txt
+	find * -name "*.java" > sources.txt
+	javac @sources.txt
+	java $(NAME) scenario.txt
 
 re: clean all
 
 clean:
-	find . -name \*.class -type f -delete
+	find . -name "*.class" -type f -delete
 
 fclean: clean
-	rm -rf *.html
-	rm -rf *.js
-	rm -rf *.css
-	rm -rf *.zip
-	rm -rf resources
-	rm -rf simulation.txt
-	rm -rf sources.txt
+	rm -f simulation.txt sources.txt
+
+.PHONY: all re clean fclean

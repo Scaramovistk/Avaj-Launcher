@@ -1,4 +1,4 @@
-package File;
+package be._42belgium.avaj.file;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -10,10 +10,7 @@ public class WriteFile
 	private static String buffContent = "";
 	private static BufferedWriter writer;
 
-	public WriteFile()
-	{
-
-	}
+	public WriteFile() {}
 
 	public static void writeToFile(String str)
 	{
@@ -26,9 +23,8 @@ public class WriteFile
 			writer = new BufferedWriter(new FileWriter(fileName));
 			writer.write(buffContent);
 			writer.close();
-		} catch (IOException e)
-		{
-			System.err.println("Error reading file: " + e.getMessage());
+		} catch (IOException e) {
+			System.err.println("Error writing file: " + e.getMessage());
 		}
 	}
 }

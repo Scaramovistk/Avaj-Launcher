@@ -1,8 +1,8 @@
-package Aircraft;
+package be._42belgium.avaj.aircraft;
 
-import Interface.*;
-import Exception.*;
-import File.*;
+import be._42belgium.avaj.flyable.Flyable;
+import be._42belgium.avaj.exception.IncorrectClassInitialisationException;
+import be._42belgium.avaj.file.WriteFile;
 
 public class Aircraft extends Flyable
 {
@@ -11,10 +11,10 @@ public class Aircraft extends Flyable
 	protected String name;
 	protected Coordinates coordinates;
 
-	protected Aircraft(long p_id, String p_name, Coordinates p_coordinate) throws IncorrectClassInitialisationExeption
+	protected Aircraft(long p_id, String p_name, Coordinates p_coordinate) throws IncorrectClassInitialisationException
 	{
 		if (p_id < 0 || p_name == null || p_coordinate == null)
-			throw new IncorrectClassInitialisationExeption("Aicraft atribute set to null");
+			throw new IncorrectClassInitialisationException("Aicraft atribute set to null");
 		id = p_id;
 		name = p_name;
 		coordinates = p_coordinate;
@@ -28,7 +28,6 @@ public class Aircraft extends Flyable
 
 	public void updateConditions()
 	{
-
 	}
 
 	public void sendStatus(String msg, int heigh)

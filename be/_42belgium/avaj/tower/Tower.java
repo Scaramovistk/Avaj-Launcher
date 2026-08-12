@@ -1,7 +1,7 @@
-package Tower;
+package be._42belgium.avaj.tower;
 
-import Interface.*;
-import File.*;
+import be._42belgium.avaj.flyable.Flyable;
+import be._42belgium.avaj.file.WriteFile;
 import java.util.List;
 import java.util.LinkedList;
 
